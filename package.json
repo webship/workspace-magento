@@ -27,6 +27,15 @@
   "workspacePlugin": {
     "name": "magento",
     "label": "Magento Open Source",
+    "needs": [
+      [
+        "dev",
+        "test",
+        "sandboxes",
+        "demos"
+      ],
+      "ai-agents"
+    ],
     "commands": {
       "types": [
         "sites"
