@@ -1,0 +1,75 @@
+{
+  "name": "@webship.co/workspace-magento",
+  "version": "1.0.7",
+  "description": "Magento Open Source for Webship Workspace: the builder (`cmd-magento-project.sh`) and the command-line tool in every sites folder, the default accounts, the Magento step pack wired into the testing setup, and two AI agents in the AI Agents folder.",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webship/workspace-magento.git"
+  },
+  "files": [
+    "dist/src",
+    "agents",
+    "commands",
+    "features",
+    "scripts",
+    "testing",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "workspacePlugin": {
+    "name": "magento",
+    "label": "Magento Open Source",
+    "commands": {
+      "types": [
+        "sites"
+      ],
+      "workspaces": [
+        "dev",
+        "test",
+        "sandboxes",
+        "demos"
+      ],
+      "files": [
+        "commands/cmd-magento-project.sh",
+        "commands/cmd-tools-magento-cli.sh"
+      ]
+    },
+    "scripts": {
+      "functions": [
+        "scripts/functions/fun-magento.sh"
+      ],
+      "args": [
+        "scripts/args/arg-magento.sh",
+        "scripts/args/arg-magento-cli.sh"
+      ],
+      "machine": [
+        "testing/site.feature"
+      ]
+    },
+    "ai": {
+      "agents": [
+        "agents/magento-site-builder.md",
+        "agents/magento-tester.md"
+      ]
+    },
+    "features": [
+      "features/magento.feature"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@webship.co/workspace-plugin-api": "^1.0.7",
+    "typescript": "^5.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
