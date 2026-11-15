@@ -17,7 +17,7 @@ const code = () => read(FUNCTIONS).split('\n').filter((l) => !/^\s*#/.test(l)).j
 test('the manifest names the platform, and every file it names ships', () => {
   assert.strictEqual(manifest.name, PLATFORM);
   const named = [...manifest.commands.files, ...manifest.scripts.functions, ...manifest.scripts.args, ...manifest.scripts.machine,
-    ...manifest.ai.agents, ...manifest.features];
+    ...manifest.ai.agents, ...manifest.ai.skills, ...manifest.ai.commands, ...manifest.ai.prompts, ...manifest.features];
   for (const f of named) assert.ok(fs.existsSync(path.join(PKG, f)), `${f} is in the package`);
   assert.deepStrictEqual(manifest.commands.files.map((f: string) => path.basename(f)), COMMANDS);
   assert.deepStrictEqual(manifest.ai.agents.map((f: string) => path.basename(f, '.md')), AGENTS);
@@ -161,14 +161,14 @@ test('each agent is a definition the AI Agents folder can list: named after its 
     assert.match(head, /^tools:\n(  - \S+\n?)+/m);
     assert.match(src, /cmd-tools-testing\.sh|cmd-magento-project\.sh/, `${f} names the plugin's commands`);
   }
-  const tester = read('agents/magento-tester.md');
+  const tester = read('ai/agents/magento-tester.md');
   assert.match(tester, /Never create an account in a suite/);
   assert.match(tester, /No platform name in a step phrase/);
   assert.match(tester, /Playwright MCP browser first/);
   assert.match(tester, /Never the workspace account/);
   assert.match(tester, /`admin` \| `administrator` \(Store Admin\)/, 'the tester knows the administrator test account by its handle');
   assert.match(tester, /--browser firefox/, 'and the lane for a busy machine');
-  const builder = read('agents/magento-site-builder.md');
+  const builder = read('ai/agents/magento-site-builder.md');
   assert.match(builder, /Containers only/);
   assert.match(builder, /Community edition only/);
   assert.match(builder, /One store at a time/);
@@ -186,7 +186,7 @@ test('register() adds the assistant context and nothing else', () => {
 });
 
 test('the docs say container-based, name only Webship, and carry no personal value', () => {
-  const docs = ['README.md', ...manifest.ai.agents, FUNCTIONS, 'src/index.ts', ...manifest.commands.files, ...manifest.scripts.args];
+  const docs = ['README.md', 'docs/plugin-items-pattern.md', ...manifest.ai.agents, FUNCTIONS, 'src/index.ts', ...manifest.commands.files, ...manifest.scripts.args];
   for (const f of docs) {
     const src = read(f);
     assert.doesNotMatch(src, /DDEV-only/i, `${f}: the workspace is container-based, DDEV by default`);

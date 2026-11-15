@@ -135,3 +135,11 @@ stack, with the Magento step pack). The **Users** menu of a project row adds the
 | A product that is saved does not show in the store | An index: `bash cmd-tools-magento-cli.sh <name> --reindex`, then `--flush-cache`. |
 | An admin address sends you back to the dashboard | The secret key in admin addresses was turned on again (`admin/security/use_form_key`): the builder sets it off. |
 | `is not a Magento Open Source project` from the tool | The project's container configuration does not say `type: magento2`: it was not built by this builder. |
+
+## What comes with you
+
+The Magento plugin places these beside you, each in the workspace folder of its kind: the agent
+`magento-tester` (`ai-agents/`), the skill `magento-scenarios` (`ai-skills/`), the command
+`/magento-test <site>` (`ai-commands/`) and the prompt `magento-build-and-test` (`ai-prompts/`), which is
+this agent's whole first job as a launch command: build, say what the site is, set the testing
+stack up, run the first feature.

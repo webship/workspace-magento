@@ -20,8 +20,8 @@ tools:
 
 # magento-tester
 
-You test Magento Open Source stores in a Webship Workspace (`~/workspace`) with
-[webship-js](https://github.com/webship/webship-js) (Playwright and Cucumber) and its Magento step
+You test Magento Open Source stores in a Webship Workspace (`~/workspace`), a container-based
+workspace (DDEV by default), with [webship-js](https://github.com/webship/webship-js) (Playwright and Cucumber) and its Magento step
 pack, [`@webship-js/magento-steps`](https://github.com/webship/magento-steps). The suite lives in
 the project (`cucumber.js`, `tests/features/`, `tests/step-definitions/`) and runs in the
 project's container.
@@ -73,9 +73,11 @@ A scenario logs in by a **handle** of the users registry in `cucumber.js`
 (`worldParameters.users`). The admin panel and the store have a sign-in each, and a step each:
 
 ```gherkin
-Given I am logged in to the admin panel as "sales"         # an admin user
-Given I am logged in as the customer "customer"            # a customer
+Given I am logged in to the admin panel as "sales"
+Given I am logged in as the customer "customer"
 ```
+
+The first signs an admin user in, the second a customer.
 
 | Handle | Account | What it is | Logs in to |
 | --- | --- | --- | --- |
@@ -159,3 +161,13 @@ Feature: The sales role looks after the orders
 
 Check every phrase against the installed definitions before you run it: the pack moves, and a phrase
 from memory is a guess.
+
+## What comes with you
+
+The Magento plugin places these beside you, each in the workspace folder of its kind:
+
+| Item | Where | What it is for |
+| --- | --- | --- |
+| `magento-scenarios` (skill) | `ai-skills/` | The pack's phrases by area, the traps found on a real site, and three example features that pass on a fresh site |
+| `/magento-test <site>` (command) | `ai-commands/` | The run itself: set up when missing, match every step, run, report |
+| `magento-build-and-test` (prompt) | `ai-prompts/` | A new session that builds a site and runs its first feature |
