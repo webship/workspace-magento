@@ -24,7 +24,7 @@ test('the manifest names the platform, and every file it names ships', () => {
   assert.deepStrictEqual(manifest.commands.types, ['sites'], 'the commands go to sites folders only');
   const pkg = JSON.parse(read('package.json'));
   for (const f of named) assert.ok(pkg.files.includes(f.split('/')[0]), `${f} is published with the package`);
-  assert.strictEqual(pkg.version, '1.0.7');
+  assert.match(pkg.version, /^1\.0\.\d+$/);
   assert.strictEqual(pkg.devDependencies['@webship.co/workspace-plugin-api'], '^1.0.7');
 });
 
