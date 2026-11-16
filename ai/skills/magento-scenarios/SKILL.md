@@ -215,3 +215,21 @@ bash cmd-tools-testing.sh <site> --run --path tests/features/admin-roles.feature
 | `examples/admin-roles.feature` | The menu of the administrator and of the sales role, a page the sales role is refused, the end of an admin session |
 | `examples/catalog-and-cart.feature` | A category from the menu, a sorted list, a product put in the cart, counted and taken out; a product that asks for its options |
 | `examples/customer-account.feature` | A customer logging in, an address added and deleted, a wish list filled and emptied, the end of a session |
+
+## The book
+
+For any automated functional testing in this work (a Gherkin feature, a step definition, choosing a
+step, a test run and its failures), read the book *Automated Functional Testing Recipes* first.
+
+- **Where.** Use the first that exists: `.claude/automated-functional-testing-recipes/` in the project,
+  `~/.claude/automated-functional-testing-recipes/` (installed by webship/webship-js-ai-agent,
+  webship/webship-js-skills or webship/ai-agents), or
+  https://github.com/webship/webship-js-ai-agent/tree/2.0.x/automated-functional-testing-recipes
+- **How.** Its `README.md` first, then the chapter that matches the task (one file per chapter,
+  named by its subject), not the single complete file.
+- **Which wins.** The installed webship-js package and the step pack are the source of truth for
+  step phrasing. When they differ from the book, follow them and say so.
+- **For Magento Open Source.** Start with `ch10-authentication-authorization.md` (logins, sessions
+  and access by role), `ch06-form-testing-recipes.md` (the cart, the checkout and the account
+  forms), `ch33-complete-step-definition-reference.md` (every built-in step) and
+  `ch21-when-tests-go-bad.md` (flaky, brittle and slow scenarios).
