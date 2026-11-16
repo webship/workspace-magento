@@ -10,6 +10,7 @@ Build a Magento Open Source store named <name> in this sites folder and test it 
 # nothing on the host: no bin/magento, composer, npm or mysql outside the store's container
 # the community edition only: no access keys, no account of a vendor, no marketplace extension
 # a running store takes about 2 GB of memory: look at free -g first, and stop if less is available
+# a feature to write or a run to read: the book Automated Functional Testing Recipes first (its README.md, then the matching chapter), from .claude/automated-functional-testing-recipes/ in the project, ~/.claude/automated-functional-testing-recipes/ or https://github.com/webship/webship-js-ai-agent/tree/2.0.x/automated-functional-testing-recipes
 
 1. bash cmd-magento-project.sh <name> --install --add-users
    (the sample catalog comes with it; --sample-data no leaves it out; --version <x> for another 2.4 release)
